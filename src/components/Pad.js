@@ -17,12 +17,12 @@ export default function Pad(props) {
 
     function playSound() {
         if (props.power) {
-            const audioTag = document.getElementById(audio.keyTrigger)
+            const sound = document.getElementById(audio.keyTrigger)
             setActive(true)
             setTimeout(() => setActive(false), 300)
-            audioTag.volume = props.vol
-            audioTag.currentTime = 0
-            audioTag.play()
+            sound.volume = props.vol
+            sound.currentTime = 0
+            sound.play()
             props.updateText()
         }
     }
@@ -30,11 +30,11 @@ export default function Pad(props) {
     return (
         <div 
             className="drum-pad" 
-            onClick={playSound} 
-            style={{backgroundColor: active ? "orange" : "grey"}}
+            onClick={playSound}
             id={audio.id}
+            style={{backgroundColor: active ? "orange" : "grey"}}
         >
-            <audio className="clip" src={audio.url} />
+            <audio className="clip" id={audio.keyTrigger} src={audio.url} />
             <p>{audio.keyTrigger}</p>
         </div>
     )

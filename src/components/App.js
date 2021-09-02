@@ -42,9 +42,9 @@ export default function App() {
                     <Pad 
                         key={audio.id} 
                         audio={audio} 
-                        vol={vol} 
+                        vol={vol}
                         power={power}
-                        updateText={() => {if (power) setText(audio.id)}}
+                        updateText={() => setText(audio.id)}
                     />
                 ))}
             </div>
@@ -68,7 +68,7 @@ export default function App() {
                     max="1" 
                     min="0"
                     type="range" 
-                    step="0.1" 
+                    step="0.01" 
                     value={vol} 
                     onChange={handleChangeVol} 
                 />

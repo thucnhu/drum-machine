@@ -8,3 +8,8 @@
     border-radius: 6px;
     cursor: pointer;
 }
+
+.drum-pad:active {
+    box-shadow: none;
+    transition: 250ms ease;
+}
