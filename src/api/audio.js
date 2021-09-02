@@ -114,4 +114,4 @@ const audioBank2 = [
 ]
 
 
-export default { audioBank1, audioBank2 }
+export { audioBank1, audioBank2 }

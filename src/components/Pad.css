@@ -1,0 +1,9 @@
+.drum-pad {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: black 3px 3px 5px;
+    border-radius: 6px;
+}
