@@ -9,19 +9,22 @@ export default function Pad(props) {
     useEffect(() => {
         document.addEventListener("keydown", handleKeyPress)
         return () => document.removeEventListener("keydown", handleKeyPress)
-    }, [])
+    }, [handleKeyPress])
 
     function handleKeyPress(event) {
         if (event.keyCode === audio.keyCode) playSound()
     }
 
     function playSound() {
-        const audioTag = document.getElementById(audio.keyTrigger)
-        setActive(true)
-        setTimeout(() => setActive(false), 300)
-        audioTag.volume = props.vol
-        audioTag.currentTime = 0
-        audioTag.play()
+        if (props.power) {
+            const audioTag = document.getElementById(audio.keyTrigger)
+            setActive(true)
+            setTimeout(() => setActive(false), 300)
+            audioTag.volume = props.vol
+            audioTag.currentTime = 0
+            audioTag.play()
+            props.updateText()
+        }
     }
 
     return (
@@ -29,9 +32,10 @@ export default function Pad(props) {
             className="drum-pad" 
             onClick={playSound} 
             style={{backgroundColor: active ? "orange" : "grey"}}
+            id={audio.id}
         >
-            <audio className="clip" id={audio.keyTrigger} src={audio.url} />
-            {audio.keyTrigger}
+            <audio className="clip" src={audio.url} />
+            <p>{audio.keyTrigger}</p>
         </div>
     )
 }
